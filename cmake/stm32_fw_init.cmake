@@ -7,6 +7,6 @@ macro(stm32_fw_init FAMILY VERSION)
 
     target_include_directories(Drivers
     PRIVATE
-        config
+        boards/STM32F4-Discovery
     )
 endmacro()

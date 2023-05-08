@@ -41,7 +41,7 @@ add_compile_options(
 add_link_options(
     ${MCU_OPTIONS}
     -specs=nano.specs
-    -T${CMAKE_SOURCE_DIR}/STM32F407VGTx_FLASH.ld
+    -T${CMAKE_SOURCE_DIR}/boards/STM32F4-Discovery/STM32F407VGTx_FLASH.ld
     -Wl,-Map=${PROJECT_NAME}.map,--cref
     -Wl,--gc-sections
     -lstdc++
