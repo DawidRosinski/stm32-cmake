@@ -5,8 +5,19 @@ macro(stm32_fw_init FAMILY VERSION)
 
     add_subdirectory("${STM32_FW_PATH}\\STM32Cube_FW_${FAMILY}_V${VERSION}" Drivers)
 
-    target_include_directories(Drivers
-    PRIVATE
-        boards/STM32F4-Discovery
+endmacro()
+
+macro(stm32_create_outputs TARGET)
+    add_custom_command(TARGET ${TARGET}
+        POST_BUILD
+        COMMAND ${CMAKE_SIZE_UTIL} ${TARGET}
+    )
+
+    # Create a custom command to generate binary and hex files.
+    # These can be used depending on which method of loading the firmware to the MCU is used.
+    add_custom_command(TARGET ${TARGET}
+        POST_BUILD
+        COMMAND ${CMAKE_OBJCOPY} -O ihex ${TARGET} ${TARGET}.hex
+        COMMAND ${CMAKE_OBJCOPY} -O binary ${TARGET} ${TARGET}.bin
     )
 endmacro()
