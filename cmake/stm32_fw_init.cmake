@@ -19,5 +19,6 @@ macro(stm32_create_outputs TARGET)
         POST_BUILD
         COMMAND ${CMAKE_OBJCOPY} -O ihex ${TARGET} ${TARGET}.hex
         COMMAND ${CMAKE_OBJCOPY} -O binary ${TARGET} ${TARGET}.bin
+        # COMMAND ${CMAKE_OBJDUMP} -D ${TARGET} > ${TARGET}.list
     )
 endmacro()

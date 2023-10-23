@@ -13,7 +13,8 @@ set(EXTRA_OPTIONS
 # https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#build-configurations
 # https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 set(OPTIMIZATION_OPTIONS
-    $<$<CONFIG:Debug>:-Og>
+    # $<$<CONFIG:Debug>:-Og>
+    -O0
 )
 
 # https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
